@@ -3,6 +3,14 @@
 #include <iostream>
 #include <math.h>
 
+Goldbach::Goldbach(){}
+
+Goldbach::Goldbach(int n1){n=n1;}
+
+Goldbach::~Goldbach(){}
+
+bool Goldbach::valid(){return ((n%2==0)&&(n>2));}
+
 std::vector<int> Goldbach::GoldbachConjecture(int flag){
 
     //assume valid method has already been called and passed
@@ -14,7 +22,7 @@ std::vector<int> Goldbach::GoldbachConjecture(int flag){
     //add 2 to the vector
     Primes.push_back(2);
 
-    //only need to consider odd numbers
+    //only need to consider odd numbers as potential primes
     for(int y=3;y<=n/2;y=y+2){
         //check if y is prime, if so add to Primes
         if(IsPrime(y,Primes)){Primes.push_back(y);}
@@ -24,14 +32,16 @@ std::vector<int> Goldbach::GoldbachConjecture(int flag){
     //must account for the case k=n/2
     for(int x=0;x<Primes.size();++x){
 
-        if(n-Primes[x]==n/2){
+        if(IsPrime(n-Primes[x],Primes)){
             output.push_back(Primes[x]);
-            if(flag==0){return output;}
 
-        } else if(IsPrime(n-Primes[x],Primes)){
-            output.push_back(Primes[x]);
             if(flag==0){return output;}
         }
+    }
+
+    //case k=n/2
+    if(Primes[Primes.size()-1]==n/2){
+        output.push_back(Primes[Primes.size()-1]);
     }
 
     return output;

@@ -9,19 +9,12 @@ private:
     int n;
 
 public:
-    Goldbach(){n=2;}
-    Goldbach(int n1){n=n1;}
-    ~Goldbach(){}
-
-    // No need to implement copy and move constructors
-	Goldbach(const Goldbach&) = delete;
-	Goldbach(Goldbach&&) = delete;
-	// No need to implement assignment operators
-	Goldbach& operator=(const Goldbach& other) = delete;
-	Goldbach& operator=(Goldbach&& other) = delete;
+    Goldbach();
+    Goldbach(int n1);
+    ~Goldbach();
 
     //checks whether n is even and more than 2
-    bool valid(){return ((n%2==0)&&(n>2));}
+    bool valid();
 
     //Returns a vector of primes whose complement is also prime
     //and whose sum with its complement adds up to n

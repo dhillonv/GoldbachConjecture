@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Goldbach.cpp"
+#include "Goldbach.h"
 #include <vector>
 
 using namespace std;
@@ -24,8 +24,11 @@ int main()
         cout << endl;
         if(flag==0){
         cout << "A pair of primes that sum to " << n << " is:" << endl;
-        } else {
+        } else if(flag==1){
         cout << "The pairs of primes that sum to " << n << " are:" << endl;
+        } else {
+        cout << "Error. Invalid input. You did not enter 0 or 1." << endl;
+        return 0;
         }
         for(int y=0; y<Primes.size(); ++y){
             cout << "(" << Primes[y] << "," << n-Primes[y] << ")" << endl;
@@ -33,7 +36,7 @@ int main()
 
     } else {
 
-    cout << "Error. Invalid input. You did not enter a positive integer greater than 2." << endl;}
+    cout << "Error. Invalid input. You did not enter a positive even integer greater than 2." << endl;}
 
     return 0;
 }
